@@ -23,7 +23,7 @@
       Resume: {{applicant.resume}}<br>
       Email: {{applicant.email}}<br>
       <br>
-      <md-button class="md-raised" ng-click="sendEmail(applicant.email, job.title)">Contact</md-button>
+      <md-button class="md-raised" ng-click="clickToOpenContact($index, $parent.$index)">Contact</md-button>
     </div>
   </md-card>
 </div>

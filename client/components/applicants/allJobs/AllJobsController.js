@@ -1,8 +1,20 @@
 
 angular.module('evenhire.allJobs', [])
 
-  .controller('AllJobsController', ['$scope', '$state', 'Applicant', function ($scope, $state, Applicant) {
+  .controller('AllJobsController', ['$scope', '$state', 'Applicant','$mdDialog','ngDialog', function ($scope, $state, Applicant, $mdDialog, ngDialog) {
     $scope.fetchedJobs = [];
+
+
+  // $scope.clickToOpen = function () {
+  //   ngDialog.open({
+  //     template: '../../components/recruiters/recHome/tabDialog.tmpl.html',
+  //     controller: 'AllJobsController',
+  //     className: 'ngdialog-theme-default'
+  //   });
+  // };
+  // $scope.closeDialog = function () {
+  //   ngDialog.close();
+  // };
 
     $scope.getAllJobs = function() {
       Applicant.allJobs()

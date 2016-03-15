@@ -5,16 +5,28 @@ angular.module('evenhire.recruiters', [])
   $scope.newJob = {};
   $scope.JobApplicant = {};
   $scope.error;
-
+  $scope.contactMessage = '';
   $scope.clickToOpen = function () {
     ngDialog.open({
-      template: './components/recruiters/recHome/tabDialog.tmpl.html',
+      template: './components/recruiters/recHome/newJobDialog.tmpl.html',
       controller: 'RecHomeController',
       className: 'ngdialog-theme-default'
     });
   };
   $scope.closeDialog = function () {
     ngDialog.close();
+  };
+
+  $scope.clickToOpenContact = function (applicantIndex, jobIndex) {
+    console.log('applicants:', $scope.JobApplicant)
+    console.log('job:', $scope.postedJobs[results])
+    $scope.applicantToContact = $scope.JobApplicant[$scope.postedJobs[results][jobIndex]][applicantIndex];
+    $scope.jobToContactAbout = $scope.postedJobs[results][jobIndex];
+    ngDialog.open({
+      template: './components/recruiters/recHome/contactDialog.tmpl.html',
+      controller: 'RecHomeController',
+      className: 'ngdialog-theme-default'
+    });
   };
 
   var currentUser = Auth.getCurrentUser();
@@ -50,10 +62,11 @@ angular.module('evenhire.recruiters', [])
   };
 
   $scope.sendEmail = function(applicantEmail, jobTitle) {
-    Recruiter.sendEmail(applicantEmail, jobTitle, $scope.companyName, $scope.companyEmail)
-      .then(function(response) {
-        alert(response.message);
-      });
+    console.log(applicantEmail, jobTitle);
+    // Recruiter.sendEmail(applicantEmail, jobTitle, $scope.companyName, $scope.companyEmail, $scope.contactMessage)
+    //   .then(function(response) {
+    //     alert(response.message);
+    //   });
   };
 
 }]);

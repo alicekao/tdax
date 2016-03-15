@@ -1,0 +1,15 @@
+<div layout="row" layout-align="center center" class="dialog-contents">
+  <div flex="50">
+    <h2 class="md-headline">Send an email</h2>
+    <md-content>
+      <md-input-container>
+        <label>Message{{applicant.email}}</label>
+        <input type="text" name="message" ng-model="contactMessage" required>
+      </md-input-container>
+      <md-button class="md-raised md-primary" type="submit" ng-click="sendEmail(applicant.email, job.title); closeDialog()">Submit</md-button>
+    </md-content>
+  </div>
+</md-content>
+</div>
+
+

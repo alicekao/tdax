@@ -3,8 +3,8 @@
     <input flex=30 type="text" ng-model="searchText" placeholder="search" />
   </md-content>
   <h2 class="md-headline">Job Postings</h2>
-  <md-button ui-sref="recruiters" class="md-raised">Click here to post a job</md-button>
-  <md-content class="jobCard md-padding" ng-repeat="job in fetchedJobs | filter:searchText">
+  <md-button ui-sref="recruiters" class="md-raised" ng-click="clickToOpen()">Click here to post a job</md-button>
+  <md-content class="jobCard md-padding" ng-repeat="job in fetchedJobs | filter:searchText | orderBy: '-createdAt'">
     <md-card>
       <md-card-title class="md-padding md-headline">{{job.recruiter.name}} - {{job.title}}</md-card-title>
       <md-card-content>
